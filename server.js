@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('dev'))
 
-const port = 9000
+const port = process.env.PORT || 3001
 
 mongoose.connect(process.env.DB_URL_NET, {}, (err) => {
   if (err) {
@@ -26,6 +26,6 @@ mongoose.connect(process.env.DB_URL_NET, {}, (err) => {
 
 app.use(routes)
 
-app.listen(process.env.PORT, () => console.log(`Listening at: ${port}`))
+app.listen(port, () => console.log(`Listening at: ${port}`))
 
 module.exports = app
